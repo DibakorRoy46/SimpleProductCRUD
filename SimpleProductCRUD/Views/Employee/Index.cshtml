@@ -1,0 +1,58 @@
+﻿@model List<SimpleProductCRUD.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div style="display:flex;align-items:flex-end;justify-content:space-between">
+    <div>
+        <h3>Customer Details</h3>
+    </div>
+    <div>
+        <a href="@Url.Action("Create","Employee")" class="btn btn-sm btn-primary">Create Customer</a>
+    </div>
+
+</div>
+<table id="example" class="table table-striped" style="margin-top: 25px;">
+    <thead class="mdb-color darken-3">
+        <tr class="text-white">
+            <th>@Html.DisplayNameFor(model => model[0].FirstName)</th>
+            <th>@Html.DisplayNameFor(model => model[0].LastName)</th>
+            <th>@Html.DisplayNameFor(model => model[0].Phone)</th>
+            <th>@Html.DisplayNameFor(model => model[0].Email)</th>
+            <th>@Html.DisplayNameFor(model => model[0].Street)</th>
+            <th>@Html.DisplayNameFor(model => model[0].City)</th>
+            <th>@Html.DisplayNameFor(model => model[0].State)</th>
+            <th>@Html.DisplayNameFor(model => model[0].Zipcode)</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.Phone</td>
+                <td>@item.Email</td>
+                <td>@item.Street</td>
+                <td>@item.City</td>
+                <td>@item.State</td>
+                <td>@item.Zipcode</td>
+                <td>
+                    <a href="@Url.Action("Details","Employee",new { id=item.CustomerId})" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>
+                    <a href="@Url.Action("Edit","Employee",new { id=item.CustomerId})" class="btn btn-sm btn-info"><i class="fa fa-pencil-square"></i></a>
+                    <a href="@Url.Action("Delete","Employee",new { id=item.CustomerId})" class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
